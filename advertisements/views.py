@@ -1,3 +1,4 @@
+from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import Advertisement
@@ -15,6 +16,7 @@ class AdvertisementViewSet(ModelViewSet):
     permission_classes = [AllowAny]
     filter_backends = [DjangoFilterBackend]
     filterset_class = AdvertisementFilter
+    throttle_classes = [UserRateThrottle, AnonRateThrottle]
 
     def get_permissions(self):
         """Получение прав для действий."""
