@@ -1,15 +1,15 @@
 import django_filters
 
-from advertisements.models import Advertisement
+from advertisements.models import Advertisement, AdvertisementStatusChoices
 
 
 class AdvertisementFilter(django_filters.FilterSet):
     """Фильтры для объявлений."""
     created_at = django_filters.DateFromToRangeFilter()
-    status = django_filters.BooleanFilter()
+    status = django_filters.ChoiceFilter(choices=AdvertisementStatusChoices.choices)
 
     # TODO: задайте требуемые фильтры
 
     class Meta:
         model = Advertisement
-        fields = ['created_at', 'status', ]
+        fields = ['created_at', 'status', 'creator', ]
