@@ -12,4 +12,4 @@ class AdvertisementFilter(django_filters.FilterSet):
 
     class Meta:
         model = Advertisement
-        fields = ['created_at', 'status', 'creator']
+        fields = ['created_at', 'status', ]
