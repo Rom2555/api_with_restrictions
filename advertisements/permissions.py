@@ -1,7 +1,8 @@
 from rest_framework import permissions
+from rest_framework.permissions import BasePermission
 
 
-class IsOwnerOrReadOnly(permissions.BasePermission):
+class IsOwnerOrReadOnly(BasePermission):
     """
     -только создатель может изменять/удалять объявление
     -SAFE_METHODS (GET, HEAD, OPTIONS) - разрешено всем

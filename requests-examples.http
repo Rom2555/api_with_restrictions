@@ -2,9 +2,16 @@
 
 @baseUrl = http://localhost:8000/api
 
-# получение объявлений
+# получение объявлений без токена (10 в минуту)
 GET {{baseUrl}}/advertisements/
 Content-Type: application/json
+
+###
+
+# получение объявлений с токеном (20 в минуту). Токен admin
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 40aa1dc45d0b456a3f0f79491d85811c02d18566
 
 ###
 
@@ -21,7 +28,7 @@ Authorization: Token 40aa1dc45d0b456a3f0f79491d85811c02d18566
 ###
 
 # попытка поменять объявление, токен ivanov
-PATCH {{baseUrl}}/advertisements/1/
+PATCH {{baseUrl}}/advertisements/4/
 Content-Type: application/json
 Authorization: Token b60c5784f5d38732e8968fc2360162ecbd3ef098
 
@@ -40,3 +47,9 @@ Content-Type: application/json
 # фильтрация по дате
 GET {{baseUrl}}/advertisements/?created_at_before=2020-10-01
 Content-Type: application/json
+
+###
+
+# Удаление объявления создателем
+DELETE {{baseUrl}}/advertisements/3/
+Authorization: Token 40aa1dc45d0b456a3f0f79491d85811c02d18566
