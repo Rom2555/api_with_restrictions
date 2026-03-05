@@ -1,6 +1,6 @@
 from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 from rest_framework.viewsets import ModelViewSet
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated
 from .models import Advertisement
 from .serializers import AdvertisementSerializer
 from .filters import AdvertisementFilter
@@ -13,7 +13,6 @@ class AdvertisementViewSet(ModelViewSet):
 
     queryset = Advertisement.objects.all()
     serializer_class = AdvertisementSerializer
-    permission_classes = [AllowAny]
     filter_backends = [DjangoFilterBackend]
     filterset_class = AdvertisementFilter
     throttle_classes = [UserRateThrottle, AnonRateThrottle]
